@@ -1,8 +1,74 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@model IEnumerable<my_cs_degree.Models.GitHubCommitModel>
+
+<div class="text-center mt-5">
+    <div class="alert alert-light text-white" role="alert">
+        <h4 class="alert-heading">Welcome!</h4>
+        <p>This web application is a collection of tools to help students of Computer Science at University Of London (UoL). <br /> It's a community driven project, open source, and in no way or shape affiliated to University of London or Goldsmiths, University of London</p>
+        <hr>
+        <p class="mb-0 fst-italic">
+            “Find what you love and let it kill you.” - <span class="fw-bold">Charles Bukowski</span>
+        </p>
+    </div>
+
+    <h2 class="mt-2">Main Features</h2>
+
+    <div class="row mt-2">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <a href="#"><h5 class="card-title">Grade Calculator</h5></a>
+                    <p class="card-text">Let's calculate your grades, you can calculate per module or the whole program</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <a href="#"><h5 class="card-title">Progress Tracker</h5></a>
+                    <p class="card-text">Let's keep your progress up to date! Modules, dates, semesters, anything!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <a href="#"><h5 class="card-title">Program Resources</h5></a>
+                    <p class="card-text">Need to answer some questions about the program? a module? need some guidance?</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <a href="#"><h5 class="card-title">Tutorials</h5></a>
+                    <p class="card-text">Yep! You can learn things with us as well. Projects, ideas, technologies and more.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="mt-2">Latest updates</h2>
+
+    <ol class="list-group list-group mt-2">
+        @foreach (var commit in Model)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <a href="@commit.Url" target="_blank">
+                        <div class="fw-bold">@commit.Commit.Message</div>
+                    </a>
+                    <p class="text-start mb-0">@commit.Commit.Author.Name</p>
+                </div>
+                <span class="badge bg-primary rounded-pill">@commit.Commit.Author.Date.ToString("MMMM dd, yyyy")</span>
+            </li>
+        }
+    </ol>
+
 </div>
