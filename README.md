@@ -15,6 +15,8 @@ Tech Stack:
 |Tutorials|You can learn things with us as well. Projects, ideas, technologies and more|![TODO](https://shields.io/badge/status-TO_DO-red?style=flat-square)|
 
 # Building
+**Requires: net 7.0**
+
 - Clone the project
 ```bash
 git clone https://github.com/my-uol/my-cs-degree.git
