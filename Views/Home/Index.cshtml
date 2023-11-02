@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewData["Title"] = "Home";
 }
 
@@ -48,7 +48,7 @@
             <div class="card">
                 <div class="card-body">
                     <a href="#"><h5 class="card-title">Tutorials</h5></a>
-                    <p class="card-text">Yep! You can learn things with us as well. Projects, ideas, technologies and more.</p>
+                    <p class="card-text">Yep! You can learn things with us as well. Projects, ideas, technologies and more. Let's learn by teaching.</p>
                 </div>
             </div>
         </div>
@@ -56,6 +56,7 @@
 
     <h2 class="mt-2">Latest updates</h2>
 
+    @if(Model != null) {
     <ol class="list-group list-group mt-2">
         @foreach (var commit in Model)
         {
@@ -70,5 +71,12 @@
             </li>
         }
     </ol>
+    }
+else
+    {
+        <div class="alert alert-danger" role="alert">
+            Something is wrong with the API, you can <a href="https://github.com/my-uol/my-cs-degree/issues" target="_blank" class="alert-link">check here</a>.
+        </div>
+    }
 
 </div>
