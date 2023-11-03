@@ -1,0 +1,72 @@
+@{
+    ViewData["Title"] = "Grade Calculator";
+}
+
+<div class="text-center mt-5">
+  <h1>Select a level:</h1>
+  <ul class="nav nav-underline justify-content-center mb-5">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Level 4</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Level 5</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Level 6</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">Final Project</a>
+    </li>
+  </ul>
+  
+  <h2>Select a module:</h2>
+  <ul class="nav nav-tabs justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active loadPartialButton" data-partial="itp1">ITP I</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link loadPartialButton" data-partial="itp2">ITP II</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">CM</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">DM</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">HWC</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">FCS</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">WD</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">ADS I</a>
+    </li>
+  </ul>
+  
+<div class="calculator-table">
+    @await Html.PartialAsync("Partials/itp1")
+</div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $(".loadPartialButton").click(function(e){
+        e.preventDefault();
+
+        $(".loadPartialButton").removeClass("active");
+        
+        $(this).addClass("active");
+
+        var partialName = $(this).data("partial");
+        $.get("/GradeCalculator/ChangeModule?partialName=" + partialName, function(data) {
+            $(".calculator-table").html(data);
+        });
+    });
+});
+
+</script>
+

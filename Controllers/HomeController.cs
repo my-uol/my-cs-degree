@@ -19,14 +19,20 @@ public class HomeController : Controller
     public async Task<IActionResult> Index()
     {
         string gitHubApi = "https://api.github.com/repos/my-uol/my-cs-degree/commits";
-
+        var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
+        
         try
         {
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("User-Agent", "C# App");
                 client.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
-                client.DefaultRequestHeaders.Add("Authorization", "token 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");
+                client.DefaultRequestHeaders.Add("Authorization", $"token {githubToken}");
+                
+                if (string.IsNullOrEmpty(githubToken))
+                {
+                    throw new InvalidOperationException("GITHUB_TOKEN environment variable is not set.");
+                }
 
                 var response = await client.GetAsync(gitHubApi);
 
@@ -48,11 +54,6 @@ public class HomeController : Controller
         {
             return View();
         }
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
