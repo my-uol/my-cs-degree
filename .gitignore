@@ -3,6 +3,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# JetBrains Rider
+.idea/
+
+# Env Files
+.env
+.env.*
+
 # User-specific files
 *.rsuser
 *.suo
