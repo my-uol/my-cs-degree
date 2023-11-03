@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/my_cs_degree.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -30,7 +31,7 @@
                     Tools
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Grade Calculator</a></li>
+                    <li><a class="dropdown-item" asp-controller="GradeCalculator" asp-action="Index">Grade Calculator</a></li>
                     <li><a class="dropdown-item" href="#">Progress Tracker</a></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                   </ul>
