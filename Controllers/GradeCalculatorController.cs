@@ -21,7 +21,7 @@ public class GradeCalculatorController : Controller
     
     public IActionResult ChangeModule(string partialName)
     {
-        if (string.IsNullOrEmpty(partialName) || (partialName != "itp1" && partialName != "itp2"))
+        if (string.IsNullOrEmpty(partialName))
         {
             return BadRequest("Invalid partial view.");
         }

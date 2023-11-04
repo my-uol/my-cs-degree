@@ -1,0 +1,142 @@
+﻿<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Midterm Assignment</th>
+    <th scope="col">Weight</th>
+    <th scope="col">Grade</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">1</th>
+    <td>Quiz: End of topic 1 summative quiz [001]</td>
+    <td>0.04</td>
+    <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeOne" placeholder="0" min="0" max="100"></td>
+  </tr>
+  <tr>
+    <th scope="row">2</th>
+    <td>Quiz: End of topic 2 summative quiz [001]</td>
+    <td>0.04</td>
+    <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeTwo" placeholder="0" min="0" max="100"></td>
+  </tr>
+  <tr>
+    <th scope="row">3</th>
+    <td>Quiz: End of topic 3 summative quiz [001]</td>
+    <td>0.04</td>
+    <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeThree" placeholder="0" min="0" max="100"></td>
+  </tr>
+  <tr>
+    <th scope="row">4</th>
+    <td>Quiz: End of topic 4 quiz summative [001]</td>
+    <td>0.04</td>
+    <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeFour" placeholder="0" min="0" max="100"></td>
+  </tr>
+  <tr>
+    <th scope="row">5</th>
+    <td>Quiz: End of topic 5 quiz summative [001]</td>
+    <td>0.04</td>
+    <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeFive" placeholder="0" min="0" max="100"></td>
+  </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>Quiz: Mid-term Quiz [001]</td>
+      <td>0.2</td>
+      <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeSix" placeholder="0" min="0" max="100"></td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td>Staff Graded Assignment: Mid-term coursework – summative [001]</td>
+      <td>0.6</td>
+      <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeSeven" placeholder="0" min="0" max="100"></td>
+    </tr>
+    <tr>
+      <th scope="row" class="table-active">&nbsp;</th>
+      <th scope="row" class="table-active">&nbsp;</th>
+      <td  class="table-active">Average Grade/Mark</td>
+      <td class="m-auto table-success" id="averageMidterm">0</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Final Assignment</th>
+    <th scope="col">Weight</th>
+    <th scope="col">Grade</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">1</th>
+    <td>Staff Graded Assignment: Examination/Assessment [002]</td>
+    <td>1.0</td>
+    <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeEight" placeholder="0" min="0" max="100"></td>
+  </tr>
+  <tr>
+    <th scope="row" class="table-active">&nbsp;</th>
+    <th scope="row" class="table-active">&nbsp;</th>
+    <td  class="table-active">Average Grade/Mark</td>
+    <td class="m-auto table-success" id="averageFinal">0</td>
+  </tr>
+  <tr>
+    <th scope="row">&nbsp;</th>
+    <td>&nbsp;</td>
+    <td class="m-auto">&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row"  class="table-active">&nbsp;</th>
+    <th scope="row" class="table-active">&nbsp;</th>
+    <td  class="table-active">Overall Grade/Mark</td>
+    <td class="m-auto table-success" id="overallGrade">0</td>
+  </tr>
+  </tbody>
+</table>
+
+<button type="button" class="btn btn-primary" onclick="calculateGrades()">Calculate</button>
+
+<script>
+    function calculateGrades() {
+      var gradeOne = parseInt(document.getElementById("gradeOne").value);
+      var gradeTwo = parseInt(document.getElementById("gradeTwo").value);
+      var gradeThree = parseInt(document.getElementById("gradeThree").value);
+      var gradeFour = parseInt(document.getElementById("gradeFour").value);
+      var gradeFive = parseInt(document.getElementById("gradeFive").value);
+      var gradeSix = parseInt(document.getElementById("gradeSix").value);
+      var gradeSeven = parseInt(document.getElementById("gradeSeven").value);
+      var gradeEight = parseInt(document.getElementById("gradeEight").value);
+      var averageMidterm = ((gradeOne * 0.04) + (gradeTwo * 0.04) + (gradeThree * 0.04) + (gradeFour * 0.04) + (gradeFive * 0.04) + (gradeSix * 0.2) + (gradeSeven * 0.6));
+      var averageFinal = gradeEight;
+      var overallGrade = ((averageMidterm + averageFinal) / 2);
+      
+      document.getElementById("averageMidterm").innerHTML = averageMidterm.toFixed(2);
+      document.getElementById("averageFinal").innerHTML = averageFinal.toFixed(2);
+      document.getElementById("overallGrade").innerHTML = overallGrade.toFixed(2);
+
+      if (overallGrade >= 40) {
+        document.getElementById("overallGrade").className = "m-auto table-success";
+      } else if (overallGrade < 40 && overallGrade >= 35) {
+        document.getElementById("overallGrade").className = "m-auto table-warning";
+      } else{
+        document.getElementById("overallGrade").className = "m-auto table-danger";
+      } 
+      
+      if (averageFinal >= 40) {
+        document.getElementById("averageFinal").className = "m-auto table-success";
+      } else if (averageFinal < 40 && averageFinal >= 35) {
+        document.getElementById("averageFinal").className = "m-auto table-warning";
+      } else{
+        document.getElementById("averageFinal").className = "m-auto table-danger";
+      }
+      
+      if (averageMidterm >= 40) {
+        document.getElementById("averageMidterm").className = "m-auto table-success";
+      } else if (averageMidterm < 40 && averageMidterm >= 35) {
+        document.getElementById("averageMidterm").className = "m-auto table-warning";
+      } else{
+        document.getElementById("averageMidterm").className = "m-auto table-danger";
+      }
+    }
+</script>
