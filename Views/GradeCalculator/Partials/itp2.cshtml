@@ -11,7 +11,7 @@
   <tr>
     <th scope="row">1</th>
     <td>Staff Graded Assignment: Partial project submission [001]</td>
-    <td>0.3</td>
+    <td id="weightOne">0.3</td>
     <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeOne" placeholder="0" min="0" max="100"></td>
   </tr>
     <tr>
@@ -36,7 +36,7 @@
   <tr>
     <th scope="row">1</th>
     <td>Staff Graded Assignment: Final project submission [002]</td>
-    <td>0.7</td>
+    <td id="weightTwo">0.7</td>
     <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeThree" placeholder="0" min="0" max="100"></td>
   </tr>
   <tr>
@@ -59,42 +59,4 @@
   </tbody>
 </table>
 
-<button type="button" class="btn btn-primary" onclick="calculateGrades()">Calculate</button>
-
-<script>
-    function calculateGrades() {
-      var gradeOne = document.getElementById("gradeOne").value;
-      var gradeThree = document.getElementById("gradeThree").value;
-      var averageMidterm = (gradeOne * 0.3);
-      var averageFinal = (gradeThree * 0.7);
-      var overallGrade = (averageMidterm + averageFinal);
-      
-      document.getElementById("averageMidterm").innerHTML = gradeOne;
-      document.getElementById("averageFinal").innerHTML = gradeThree;
-      document.getElementById("overallGrade").innerHTML = overallGrade.toFixed(2);
-
-      if (overallGrade >= 40) {
-        document.getElementById("overallGrade").className = "m-auto table-success";
-      } else if (overallGrade < 40 && overallGrade >= 35) {
-        document.getElementById("overallGrade").className = "m-auto table-warning";
-      } else{
-        document.getElementById("overallGrade").className = "m-auto table-danger";
-      } 
-      
-      if (gradeThree >= 40) {
-        document.getElementById("averageFinal").className = "m-auto table-success";
-      } else if (gradeThree < 40 && gradeThree >= 35) {
-        document.getElementById("averageFinal").className = "m-auto table-warning";
-      } else{
-        document.getElementById("averageFinal").className = "m-auto table-danger";
-      }
-      
-      if (gradeOne >= 40) {
-        document.getElementById("averageMidterm").className = "m-auto table-success";
-      } else if (gradeOne < 40 && gradeOne >= 35) {
-        document.getElementById("averageMidterm").className = "m-auto table-warning";
-      } else{
-        document.getElementById("averageMidterm").className = "m-auto table-danger";
-      }
-    }
-</script>
+<button type="button" class="btn btn-primary" onclick="triggerGradeCalculation()">Calculate</button>
