@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using my_cs_degree.Models;
 using Newtonsoft.Json;
-using my_cs_degree.Models;
-using System.Net;
+
 
 namespace my_cs_degree.Controllers;
 
@@ -18,7 +17,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        string gitHubApi = "https://api.github.com/repos/my-uol/my-cs-degree/commits";
+        const string gitHubApi = "https://api.github.com/repos/my-uol/my-cs-degree/commits";
         var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
         
         try
@@ -28,7 +27,7 @@ public class HomeController : Controller
                 client.DefaultRequestHeaders.Add("User-Agent", "C# App");
                 client.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
                 client.DefaultRequestHeaders.Add("Authorization", $"token {githubToken}");
-                
+
                 if (string.IsNullOrEmpty(githubToken))
                 {
                     throw new InvalidOperationException("GITHUB_TOKEN environment variable is not set.");
@@ -44,13 +43,10 @@ public class HomeController : Controller
 
                     return View(commits);
                 }
-                else
-                {
-                    return View();
-                }
+                return View();
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return View();
         }

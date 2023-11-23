@@ -11,37 +11,37 @@
   <tr>
     <th scope="row">1</th>
         <td>Quiz: 1.4.5 Problems, algorithms and flowcharts [001]</td>
-    <td>0.04</td>
+    <td id="weightOne">0.04</td>
     <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeOne" placeholder="0" min="0" max="100"></td>
   </tr>
   <tr>
     <th scope="row">2</th>
         <td>Quiz: 2.4.5 Pseudocode [001]</td>
-    <td>0.04</td>
+    <td id="weightTwo">0.04</td>
     <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeTwo" placeholder="0" min="0" max="100"></td>
   </tr>
   <tr>
     <th scope="row">3</th>
         <td>Quiz: 3.4.5 Abstract data structures [001]</td>
-    <td>0.04</td>
+    <td id="weightThree">0.04</td>
     <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeThree" placeholder="0" min="0" max="100"></td>
   </tr>
   <tr>
     <th scope="row">4</th>
         <td>Quiz: 4.4.4 Data structures and searching [001]</td>
-    <td>0.04</td>
+    <td id="weightFour">0.04</td>
     <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeFour" placeholder="0" min="0" max="100"></td>
   </tr>
   <tr>
     <th scope="row">5</th>
         <td>Quiz: 5.4.5 Sorting data I [001]</td>
-    <td>0.04</td>
+    <td id="weightFive">0.04</td>
     <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeFive" placeholder="0" min="0" max="100"></td>
   </tr>
     <tr>
       <th scope="row">6</th>
         <td>Staff Graded Assignment: Sudoku assignment [001]</td>
-      <td>0.8</td>
+      <td id="weightSix">0.8</td>
       <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeSix" placeholder="0" min="0" max="100"></td>
     </tr>
     <tr>
@@ -66,7 +66,7 @@
   <tr>
     <th scope="row">1</th>
     <td>Staff Graded Assignment: Examination/Assessment [002]</td>
-    <td>1.0</td>
+    <td id="weightSeven">1.0</td>
     <td class="m-auto"><input type="number" style="display: inherit !important;" class="form-control form-control-sm w-50" id="gradeSeven" placeholder="0" min="0" max="100"></td>
   </tr>
   <tr>
@@ -89,47 +89,4 @@
   </tbody>
 </table>
 
-<button type="button" class="btn btn-primary" onclick="calculateGrades()">Calculate</button>
-
-<script>
-    function calculateGrades() {
-      var gradeOne = parseInt(document.getElementById("gradeOne").value);
-      var gradeTwo = parseInt(document.getElementById("gradeTwo").value);
-      var gradeThree = parseInt(document.getElementById("gradeThree").value);
-      var gradeFour = parseInt(document.getElementById("gradeFour").value);
-      var gradeFive = parseInt(document.getElementById("gradeFive").value);
-      var gradeSix = parseInt(document.getElementById("gradeSix").value);
-      var gradeSeven = parseInt(document.getElementById("gradeSeven").value);
-      var averageMidterm = ((gradeOne * 0.04) + (gradeTwo * 0.04) + (gradeThree * 0.04) + (gradeFour * 0.04) + (gradeFive * 0.04) + (gradeSix * 0.8));
-      var averageFinal = gradeSeven;
-      var overallGrade = ((averageMidterm +averageFinal) / 2);
-      
-      document.getElementById("averageMidterm").innerHTML = averageMidterm;
-      document.getElementById("averageFinal").innerHTML = averageFinal;
-      document.getElementById("overallGrade").innerHTML = overallGrade;
-
-      if (overallGrade >= 40) {
-        document.getElementById("overallGrade").className = "m-auto table-success";
-      } else if (overallGrade < 40 && overallGrade >= 35) {
-        document.getElementById("overallGrade").className = "m-auto table-warning";
-      } else{
-        document.getElementById("overallGrade").className = "m-auto table-danger";
-      } 
-      
-      if (averageFinal >= 40) {
-        document.getElementById("averageFinal").className = "m-auto table-success";
-      } else if (averageFinal < 40 && averageFinal >= 35) {
-        document.getElementById("averageFinal").className = "m-auto table-warning";
-      } else{
-        document.getElementById("averageFinal").className = "m-auto table-danger";
-      }
-      
-      if (averageMidterm >= 40) {
-        document.getElementById("averageMidterm").className = "m-auto table-success";
-      } else if (averageMidterm < 40 && averageMidterm >= 35) {
-        document.getElementById("averageMidterm").className = "m-auto table-warning";
-      } else{
-        document.getElementById("averageMidterm").className = "m-auto table-danger";
-      }
-    }
-</script>
+<button type="button" class="btn btn-primary" onclick="triggerGradeCalculation()">Calculate</button>
