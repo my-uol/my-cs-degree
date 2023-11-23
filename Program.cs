@@ -11,7 +11,7 @@ builder.Services.AddRazorPages();
 
 
 builder.Services.AddDbContext<my_cs_degreeContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("default")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("my_cs_degreeContextConnection")));
 
 builder.Services.AddDefaultIdentity<my_cs_degreeUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<my_cs_degreeContext>();
