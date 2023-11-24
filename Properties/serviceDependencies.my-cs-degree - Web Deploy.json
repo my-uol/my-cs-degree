@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/my-cs-degree/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsmy_cs_degreeContextConn_BF649BE86D",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/myuoldb/databases/myUolDb",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:my_cs_degreeContextConnection",
+      "dynamicId": null
+    }
+  }
+}
